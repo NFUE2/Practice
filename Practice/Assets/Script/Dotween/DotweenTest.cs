@@ -7,20 +7,24 @@ public class DotweenTest : MonoBehaviour
 {
     [SerializeField]
     Transform target;
+    Vector3[] Pos = 
+        { new Vector3(10,0,0), new Vector3(0,0,0), new Vector3(5,10,0),};
 
 
     // Update is called once per frame
     void Update()
     {
         Moving();
+       
         //transform.DOMove();
     }
 
     void Moving()
     {
+        //https://dotween.demigiant.com/documentation.php 참조
+
         if (Input.GetMouseButtonDown(0))
         {
-
             //transform.DOMove(target.position,1.0f); //target.position으로 1초만에 이동 
             //transform.DOMove(target.position, 1.0f).From(); //target.position에서 기존 위치로 1초만에 이동
 
@@ -36,7 +40,8 @@ public class DotweenTest : MonoBehaviour
             //transform.DOMove(target.position, 1.0f).SetLoops(3, LoopType.Restart).onComplete = Call;
             //transform.DOMove(target.position, 1).OnComplete(() => Debug.Log(1)); //람다식 사용
 
-
+            //웨이포인트처럼 움직임 PathType에 따라 움직임이 조금 씩 다름
+            //transform.DOPath(Pos, 10.0f, PathType.CubicBezier).OnComplete(() => transform.position = Pos[1]);
         }
     }
 
